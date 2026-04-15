@@ -74,15 +74,18 @@ local parsedConfig
 
 -- chamadas de funções #################################################
 BetterFlags.start()
+ac.onSessionStart(function() start() end)
 
+-- funções ############################################################## -- 
 
--- funções ##############################################################
-
-function BetterFlags.start()
+function start()
     ac.blockSystemMessages("$CSP0:")
     BetterFlags.mensagemDeBoasVindas()
     BetterFlags.makeFlags()
 end
+
+
+
 
 function BetterFlags.mensagemDeBoasVindas()
     ac.onOnlineWelcome(function(message, config) --Reads the script config from the extra options
@@ -160,6 +163,7 @@ function BetterFlags.shouldMeatball()
         return false
     end
 end
+
 
 slowCarEvent = ac.OnlineEvent({
     -- message structure layout:
