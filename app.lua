@@ -30,7 +30,11 @@ local betterFlagSettings = ac.storage({
     flagWindowX = 0, flagWindowY = 0, flagWindowScale = 1
 })
 
-local tempSettings = betterFlagSettings
+local tempSettings = {
+    flagWindowX = betterFlagSettings.flagWindowX,
+    flagWindowY = betterFlagSettings.flagWindowY,
+    flagWindowScale = betterFlagSettings.flagWindowScale
+}
 
 local noOvertake1_S, noOvertake1_E
 local noOvertake2_S, noOvertake2_E
@@ -45,6 +49,22 @@ local totalElapsedTime
 local trackProgress
 
 BetterFlags = BetterFlags or {}
+
+-- Inicialização das variáveis em BetterFlags
+BetterFlags.totalElapsedTime = 0
+BetterFlags.trackProgress = 0
+BetterFlags.noOvertake1_S = 0
+BetterFlags.noOvertake1_E = 0
+BetterFlags.noOvertake2_S = 0
+BetterFlags.noOvertake2_E = 0
+BetterFlags.noOvertake3_S = 0
+BetterFlags.noOvertake3_E = 0
+BetterFlags.meatballThreshold = 0
+BetterFlags.slowCarFlagPersist = 0
+BetterFlags.slowCarDistance = 0.1
+BetterFlags.lastSlowCarBroadcastAttempt = 0
+BetterFlags.lastSlowCarRecieve = 0
+BetterFlags.slowCarCooldown = 1000
 
 -- VARIAVEIS PARA DEBUG
 local parsedConfig
@@ -82,7 +102,10 @@ function BetterFlags.mensagemDeBoasVindas()
 end
 
 function BetterFlags.flagHandler()
-    if ((trackProgress > noOvertake1_S) and (trackProgress < noOvertake1_E)) or ((trackProgress > noOvertake2_S) and (trackProgress < noOvertake2_E) or ((trackProgress > noOvertake3_S) and (trackProgress < noOvertake3_E))) or settingsOverride then
+    if ((BetterFlags.trackProgress > BetterFlags.noOvertake1_S) and (BetterFlags.trackProgress < BetterFlags.noOvertake1_E)) or 
+       ((BetterFlags.trackProgress > BetterFlags.noOvertake2_S) and (BetterFlags.trackProgress < BetterFlags.noOvertake2_E)) or 
+       ((BetterFlags.trackProgress > BetterFlags.noOvertake3_S) and (BetterFlags.trackProgress < BetterFlags.noOvertake3_E)) or 
+       settingsOverride then
         currentFlags[1][1] = true
     else
         currentFlags[1][1] = false
@@ -103,14 +126,14 @@ end
 
 function BetterFlags.shouldSlowCar()
     if (CAR.speedKmh < 30) and not (CAR.isInPitlane) and (CAR.wheelsOutside < 3) and (SIM.timeToSessionStart < -10000) then
-        if lastSlowCarBroadcastAttempt + slowCarCooldown < BetterFlags.totalElapsedTime then
-            lastSlowCarBroadcastAttempt = BetterFlags.totalElapsedTime
-            --ac.broadcastSharedEvent("broadcastSlowCar", trackProgress)
-            slowCarEvent({ slowCarProgress = trackProgress })
+        if BetterFlags.lastSlowCarBroadcastAttempt + BetterFlags.slowCarCooldown < BetterFlags.totalElapsedTime then
+            BetterFlags.lastSlowCarBroadcastAttempt = BetterFlags.totalElapsedTime
+            --ac.broadcastSharedEvent("broadcastSlowCar", BetterFlags.trackProgress)
+            slowCarEvent({ slowCarProgress = BetterFlags.trackProgress })
         end
 
         return true
-    elseif lastSlowCarRecieve + slowCarFlagPersist > BetterFlags.totalElapsedTime then
+    elseif BetterFlags.lastSlowCarRecieve + BetterFlags.slowCarFlagPersist > BetterFlags.totalElapsedTime then
         return true
     else
         return false
@@ -118,10 +141,10 @@ function BetterFlags.shouldSlowCar()
 end
 
 function BetterFlags.shouldMeatball()
-    if (CAR.wheels[0].suspensionDamage > meatballThreshold) or
-        (CAR.wheels[1].suspensionDamage > meatballThreshold) or
-        (CAR.wheels[2].suspensionDamage > meatballThreshold) or
-        (CAR.wheels[3].suspensionDamage > meatballThreshold) or
+    if (CAR.wheels[0].suspensionDamage > BetterFlags.meatballThreshold) or
+        (CAR.wheels[1].suspensionDamage > BetterFlags.meatballThreshold) or
+        (CAR.wheels[2].suspensionDamage > BetterFlags.meatballThreshold) or
+        (CAR.wheels[3].suspensionDamage > BetterFlags.meatballThreshold) or
         CAR.wheels[0].isBlown or
         CAR.wheels[1].isBlown or
         CAR.wheels[2].isBlown or
@@ -142,8 +165,8 @@ slowCarEvent = ac.OnlineEvent({
 }, function(sender, data)
     ac.debug('Got message: from', sender and sender.index or -1)
     ac.debug('Got message: text', data.slowCarProgress)
-    if ((data.slowCarProgress + 0.01) > trackProgress - math.floor((trackProgress + slowCarDistance)) and (data.slowCarProgress < ((trackProgress + slowCarDistance) - math.floor((trackProgress + slowCarDistance))))) then
-        lastSlowCarRecieve = totalElapsedTime
+    if ((data.slowCarProgress + 0.01) > BetterFlags.trackProgress - math.floor((BetterFlags.trackProgress + BetterFlags.slowCarDistance)) and (data.slowCarProgress < ((BetterFlags.trackProgress + BetterFlags.slowCarDistance) - math.floor((BetterFlags.trackProgress + BetterFlags.slowCarDistance))))) then
+        BetterFlags.lastSlowCarRecieve = BetterFlags.totalElapsedTime
     end
 end, ac.SharedNamespace.ServerScript)
     ac.debug("!version", "betterflags v0.51")
@@ -213,10 +236,10 @@ function BetterFlags.makeFlags()
     flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
     flagsWindow:setName("FlagWindow")
 
-    NoOver = { true, slipperyFlag }
-    Slow = { true, whiteFlag }
-    Meatball = { true, meatballFlag }
-    Code60 = { false, code60Flag }
+    local NoOver = { true, slipperyFlag }
+    local Slow = { true, whiteFlag }
+    local Meatball = { true, meatballFlag }
+    local Code60 = { false, code60Flag }
 
     currentFlags = { NoOver, Slow, Meatball, Code60 }
 end
