@@ -1,3 +1,4 @@
+-- MIT License - Copyright (c) 2026 Rubens Pereira
 --[[
     FlagSystem v1.0 - Sistema de Gerenciamento de Bandeiras para Assetto Corsa
     Autor: Rubens Pereira
