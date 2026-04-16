@@ -1,7 +1,7 @@
 
 
 SIM = ac.getSim()
-SIM.idealLineShown = true
+ac.setDriverChatNameColor(255, 0, 0)
 function script.update(dt)
     
     
