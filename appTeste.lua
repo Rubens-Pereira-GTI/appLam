@@ -81,12 +81,14 @@ function makeFlags()
     end)
 
     --alterado
-    flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
-    --flagsWindow = ui.ExtraCanvas(vec2(255,255))
-    flagsWindow:setName("FlagWindow")
-    flagsWindow:update(function(dt)
-        ui.drawRaceFlag(ac.FlagType.Unsportsmanlike)
+    stopCanceled = ui.ExtraCanvas(vec2(256, 256))
+    stopCanceled:setName("stopCanceled")
+    stopCanceled:update(function(dt)
+        ui.drawRaceFlag(ac.FlagType.StopCancel)
     end)
+
+    flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
+    flagsWindow:setName("FlagWindow")
 
     NoOver = { true, slipperyFlag }
     Slow = { true, whiteFlag }
