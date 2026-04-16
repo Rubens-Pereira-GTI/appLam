@@ -1,7 +1,7 @@
 
 
-ac.getSim().gravity = 100
-
+SIM = ac.getSim()
+SIM.idealLineShown = true
 function script.update(dt)
     
     
