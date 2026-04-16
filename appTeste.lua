@@ -3,11 +3,21 @@ CAR = ac.getCar(SIM.focusedCar)
 
 ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
 
+
+
+
 --ui init
 settingsOverride = false
 windowWidth, windowHeight = ac.getSim().windowWidth, ac.getSim().windowHeight
 uiScale = ac.getUI().uiScale
 testGameState = false
+
+
+betterFlagSettings = ac.storage({
+    flagWindowX = 0, flagWindowY = 0, flagWindowScale = 1
+})
+
+tempSettings = betterFlagSettings
 
 function makeFlags()
     startFlag = ui.ExtraCanvas(vec2(256, 256))
