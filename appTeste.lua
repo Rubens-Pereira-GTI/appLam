@@ -93,13 +93,19 @@ function script.update(dt)
            
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))       
-        currentFlags[1][1] = true
+        
         
 
     elseif CAR.wheelsOutside == 0 then
+        ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
-        currentFlags[1][1] = false
+        
     end
 
     
 end
+
+ac.onChatMessage(function()
+    --ac.broadcastSharedEvent("broadcastSlowCar", 0.3)
+    ac.store("testGameState", false)
+end)
