@@ -114,6 +114,7 @@ function script.update(dt)
 
         --pegamos o nover e o valor boleano da tabela, e o valor true 
         currentFlags[1][1] = true
+        physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
 
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
