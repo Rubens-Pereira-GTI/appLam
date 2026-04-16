@@ -69,7 +69,9 @@ function makeFlags()
         ui.drawRaceFlag(ac.FlagType.Code60)
     end)
 
-    flagsWindow = ui.ExtraCanvas(vec2(windowWidth,windowHeight))
+    --alterado
+    --flagsWindow = ui.ExtraCanvas(vec2(windowWidth,windowHeight))
+    flagsWindow = ui.ExtraCanvas(vec2(255,255))
     flagsWindow:setName("FlagWindow")
 
     NoOver = {true,slipperyFlag}
