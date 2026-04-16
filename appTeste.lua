@@ -1,116 +1,109 @@
-
-
 SIM = ac.getSim()
 CAR = ac.getCar(SIM.focusedCar)
 
 ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
 
-
+--ui init
+settingsOverride = false
+windowWidth, windowHeight = ac.getSim().windowWidth, ac.getSim().windowHeight
+uiScale = ac.getUI().uiScale
+testGameState = false
 
 function makeFlags()
-
-    startFlag = ui.ExtraCanvas(vec2(256,256)) 
+    startFlag = ui.ExtraCanvas(vec2(256, 256))
     startFlag:setName("startFlag")
-    startFlag:update(function (dt)
+    startFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Start)
     end)
 
-    cautionFlag = ui.ExtraCanvas(vec2(256,256)) 
+    cautionFlag = ui.ExtraCanvas(vec2(256, 256))
     cautionFlag:setName("cautionFlag")
-    cautionFlag:update(function (dt)
+    cautionFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Caution)
     end)
 
-    slipperyFlag = ui.ExtraCanvas(vec2(256,256)) 
+    slipperyFlag = ui.ExtraCanvas(vec2(256, 256))
     slipperyFlag:setName("slipperyFlag")
-    slipperyFlag:update(function (dt)
+    slipperyFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Slippery)
     end)
 
-    blackFlag = ui.ExtraCanvas(vec2(256,256)) 
+    blackFlag = ui.ExtraCanvas(vec2(256, 256))
     blackFlag:setName("blackFlag")
-    blackFlag:update(function (dt)
+    blackFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Stop)
     end)
 
-    whiteFlag = ui.ExtraCanvas(vec2(256,256)) 
+    whiteFlag = ui.ExtraCanvas(vec2(256, 256))
     whiteFlag:setName("whiteFlag")
-    whiteFlag:update(function (dt)
+    whiteFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.SlowVehicle)
     end)
 
-    ambulanceFlag = ui.ExtraCanvas(vec2(256,256)) 
+    ambulanceFlag = ui.ExtraCanvas(vec2(256, 256))
     ambulanceFlag:setName("ambulanceFlag")
-    ambulanceFlag:update(function (dt)
+    ambulanceFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Ambulance)
     end)
 
-    blackWhiteFlag = ui.ExtraCanvas(vec2(256,256)) 
+    blackWhiteFlag = ui.ExtraCanvas(vec2(256, 256))
     blackWhiteFlag:setName("blackWhiteFlag")
-    blackWhiteFlag:update(function (dt)
+    blackWhiteFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.ReturnToPits)
     end)
 
-    meatballFlag = ui.ExtraCanvas(vec2(256,256)) 
+    meatballFlag = ui.ExtraCanvas(vec2(256, 256))
     meatballFlag:setName("meatballFlag")
-    meatballFlag:update(function (dt)
+    meatballFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.MechanicalFailure)
     end)
 
-    blueFlag = ui.ExtraCanvas(vec2(256,256)) 
+    blueFlag = ui.ExtraCanvas(vec2(256, 256))
     blueFlag:setName("blueFlag")
-    blueFlag:update(function (dt)
+    blueFlag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.FasterCar)
     end)
 
-    code60Flag = ui.ExtraCanvas(vec2(256,256)) 
+    code60Flag = ui.ExtraCanvas(vec2(256, 256))
     code60Flag:setName("code60Flag")
-    code60Flag:update(function (dt)
+    code60Flag:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Code60)
     end)
 
     --alterado
-    flagsWindow = ui.ExtraCanvas(vec2(windowWidth,windowHeight))
+    flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
     --flagsWindow = ui.ExtraCanvas(vec2(255,255))
     flagsWindow:setName("FlagWindow")
-    flagsWindow:update(function (dt)
+    flagsWindow:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.Unsportsmanlike)
     end)
 
-    NoOver = {true,slipperyFlag}
-    Slow = {true, whiteFlag}
-    Meatball = {true, meatballFlag}
-    Code60 = {false , code60Flag}
+    NoOver = { true, slipperyFlag }
+    Slow = { true, whiteFlag }
+    Meatball = { true, meatballFlag }
+    Code60 = { false, code60Flag }
 
-    currentFlags = {NoOver,Slow,Meatball,Code60}
-
-
+    currentFlags = { NoOver, Slow, Meatball, Code60 }
 end
 
 makeFlags()
 
 
-function script.update(dt)    
-
+function script.update(dt)
     ac.debug("batt", currentFlags)
-   
+
     if CAR.wheelsOutside > 3 then
-           
         ac.debug("Wheels Outside", CAR.wheelsOutside)
-        ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))       
-        
+        ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
+
         currentFlags[1][1] = true
         currentFlags[2][1] = true
-       
-
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
         currentFlags[1][1] = false
         currentFlags[2][1] = false
     end
-
-    
 end
 
 --UI functions
