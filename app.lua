@@ -73,18 +73,18 @@ BetterFlags.slowCarCooldown = 1000
 local parsedConfig
 
 -- chamadas de funções #################################################
-BetterFlags.start()
-ac.onSessionStart(function() start() end)
+
 
 -- funções ############################################################## -- 
 
-function start()
+function BetterFlags.start()
     ac.blockSystemMessages("$CSP0:")
     BetterFlags.mensagemDeBoasVindas()
     BetterFlags.makeFlags()
 end
 
-
+BetterFlags.start()
+ac.onSessionStart(function() BetterFlags.start() end)
 
 
 function BetterFlags.mensagemDeBoasVindas()
