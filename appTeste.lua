@@ -70,8 +70,8 @@ function makeFlags()
     end)
 
     --alterado
-    --flagsWindow = ui.ExtraCanvas(vec2(windowWidth,windowHeight))
-    flagsWindow = ui.ExtraCanvas(vec2(255,255))
+    flagsWindow = ui.ExtraCanvas(vec2(windowWidth,windowHeight))
+    --flagsWindow = ui.ExtraCanvas(vec2(255,255))
     flagsWindow:setName("FlagWindow")
     flagsWindow:update(function (dt)
         ui.drawRaceFlag(ac.FlagType.Unsportsmanlike)
@@ -99,9 +99,7 @@ function script.update(dt)
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))       
         
-        currentFlags[1][1] = true
-        currentFlags[2][1] = true
-        
+       
 
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
@@ -113,3 +111,42 @@ function script.update(dt)
     
 end
 
+--UI functions
+--UI FUNCTIONSSS
+-- ajusta a resolução da janela e reposiciona a janela de bandeiras de acordo com a resolução, mantendo o mesmo tamanho relativo
+ac.onResolutionChange(function()
+    windowWidth, windowHeight = ac.getSim().windowWidth, ac.getSim().windowHeight
+
+    mirrorScale = windowHeight / 1800
+
+
+    vmirrorTop = (85 / uiScale)
+    vmirrorLeft = ((windowWidth / 2) - (425.45525 * mirrorScale) - 2) / uiScale
+    vmirrorBottom = ((213.78521 * mirrorScale + 83.3) / uiScale)
+    vmirrorRight = ((windowWidth / 2) + (425.45525 * mirrorScale) + 2) / uiScale
+    flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
+end)
+
+
+function script.drawUI() --Draws a shitty UI for it.
+    if settingsOverride then
+        ui.setCursor(vec2(tempSettings.flagWindowX * windowWidth, tempSettings.flagWindowY * windowHeight))
+    else
+        ui.setCursor(vec2(betterFlagSettings.flagWindowX * windowWidth, betterFlagSettings.flagWindowY * windowHeight))
+    end
+
+    flagsWindow:clear()
+    flagsWindow:update(function(dt)
+        local blanks = 0
+        for i = 1, #currentFlags do
+            if currentFlags[i][1] then
+                ui.drawImage(currentFlags[i][2], vec2((120 * (i - blanks)), 0), vec2(256 + (120 * (i - blanks)), 256))
+            else
+                blanks = blanks + 1
+            end
+        end
+    end)
+    ui.image(flagsWindow, vec2(windowWidth, windowHeight))
+
+    ui.setCursor(vec2(0, 0))
+end
