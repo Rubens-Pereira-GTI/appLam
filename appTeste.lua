@@ -80,11 +80,18 @@ function makeFlags()
         ui.drawRaceFlag(ac.FlagType.Code60)
     end)
 
-    --alterado
+    --dosn't exist in ac but in app exist
     stopCanceled = ui.ExtraCanvas(vec2(256, 256))
     stopCanceled:setName("stopCanceled")
     stopCanceled:update(function(dt)
         ui.drawRaceFlag(ac.FlagType.StopCancel)
+    end)
+
+    --dosn't exist in ac but in app exist
+    coutionFlag = ui.ExtraCanvas(vec2(256, 256))
+    coutionFlag:setName("coutionFlag")
+    coutionFlag:update(function(dt)
+        ui.drawRaceFlag(ac.FlagType.Caution)
     end)
 
     flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
