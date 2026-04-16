@@ -83,9 +83,6 @@ function BetterFlags.start()
     BetterFlags.makeFlags()
 end
 
-BetterFlags.start()
-ac.onSessionStart(function() BetterFlags.start() end)
-
 
 function BetterFlags.mensagemDeBoasVindas()
     ac.onOnlineWelcome(function(message, config) --Reads the script config from the extra options
@@ -339,3 +336,7 @@ function script.drawUI() --Draws a shitty UI for it.
 
     ui.setCursor(vec2(0, 0))
 end
+
+BetterFlags.start()
+ac.onSessionStart(function() BetterFlags.start() end)
+
