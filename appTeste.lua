@@ -108,11 +108,16 @@ function script.update(dt)
 
         currentFlags[1][1] = true
         currentFlags[2][1] = true
+        currentFlags[3][1] = true
+        currentFlags[4][1] = true
+
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
         currentFlags[1][1] = false
         currentFlags[2][1] = false
+        currentFlags[3][1] = false
+        currentFlags[4][1] = false
     end
 end
 
