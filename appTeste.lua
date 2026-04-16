@@ -93,9 +93,10 @@ function makeFlags()
     flagsWindow = ui.ExtraCanvas(vec2(windowWidth, windowHeight))
     flagsWindow:setName("FlagWindow")
 
-    NoOver = { true, slipperyFlag }
-    Slow = { true, whiteFlag }
-    Meatball = { true, meatballFlag }
+    -- cria uma tabela passa o valor boleano e a bandeira correspondente, para facilitar a manipulação das bandeiras
+    NoOver = { false , slipperyFlag }
+    Slow = { false, whiteFlag }
+    Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
 
     currentFlags = { NoOver, Slow, Meatball, Code60 }
@@ -111,18 +112,14 @@ function script.update(dt)
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
 
+        --pegamos o nover e o valor boleano da tabela, e o valor true 
         currentFlags[1][1] = true
-        currentFlags[2][1] = true
-        currentFlags[3][1] = true
-        currentFlags[4][1] = true
 
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
         currentFlags[1][1] = false
-        currentFlags[2][1] = false
-        currentFlags[3][1] = false
-        currentFlags[4][1] = false
+       
     end
 end
 
