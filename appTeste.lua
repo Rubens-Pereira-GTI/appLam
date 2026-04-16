@@ -105,7 +105,3 @@ function script.update(dt)
     
 end
 
-ac.onChatMessage(function()
-    --ac.broadcastSharedEvent("broadcastSlowCar", 0.3)
-    ac.store("testGameState", false)
-end)
