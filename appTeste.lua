@@ -6,14 +6,19 @@ CAR = ac.getCar(SIM.focusedCar)
 SIM.speedLimitKmh = 200
 ac.setDriverChatNameColor(CAR, rgbm(0, 5, 0, 1))
 
--- Registrando uma ferramenta extra no chat
--- Registrando uma ferramenta extra no chat
 ac.registerOnlineExtra('Meu Menu de Admin', function()
-    -- Aqui vai o código da interface (UI)
     ui.text("Olá, Admin!")
-    ui.button("Dar Kick em alguém")
-        -- Lógica de kick
+
+    -- O 'if' verifica se o botão foi clicado naquele frame
+    if ui.button("Dar Kick em alguém") then
+        -- Lógica de kick: enviando um comando para o servidor
+        ac.sendChatMessage("/kick 1") 
+        ac.log("Comando de kick enviado!")
+    end
 end, ui.OnlineExtraFlags.Admin + ui.OnlineExtraFlags.Tool)
 
-
+function script.update(dt)
+   
+    
+end
 
