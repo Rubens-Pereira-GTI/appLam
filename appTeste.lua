@@ -114,8 +114,9 @@ function script.update(dt)
     --surfaceSectorID()
     local fl = CAR.wheels[0]
     
-    ac.debug("tipo da superficie", fl.surfaceSectorID)
+    ac.debug("setordapista", fl.surfaceSectorID)
     ac.debug("nivel de sujeira", fl.tyreDirty)
+    ac.debug("tipo da superficie", fl.surfaceType)
     
             
     if CAR.wheelsOutside > 3 then
