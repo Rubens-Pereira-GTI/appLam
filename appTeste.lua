@@ -109,7 +109,8 @@ function script.update(dt)
 
     ac.SurfaceExtendedType.Grass:getCar();
 
-
+    ac.debug("teste de superficie", ac.SurfaceExtendedType)
+            
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
@@ -118,10 +119,7 @@ function script.update(dt)
         currentFlags[1][1] = true
         physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
 
-        if ac.SurfaceExtendedType.Grass == 0 then
-            ac.debug("Status", "O pneu está na GRAMA!")
-            currentFlags[4][1] = true
-        end
+        
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
