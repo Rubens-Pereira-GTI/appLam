@@ -114,7 +114,7 @@ function script.update(dt)
     --surfaceSectorID()
    
     
-    ac.debug("teste de superficie", StateWheel.surfaceSectorID())
+    ac.debug("teste de superficie", StateWheel.surfaceSectorID)
     ac.debug("teste de superficie", ac.StateWheel.surfaceSectorID)
     ac.debug("flatSport", ac.StateWheel.tyreDirty)
 
