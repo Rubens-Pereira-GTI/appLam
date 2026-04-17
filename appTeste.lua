@@ -110,14 +110,13 @@ makeFlags()
 function script.update(dt)
     ac.debug("batt", currentFlags)
 
-    -- ac.SurfaceExtendedType.Grass
-    --surfaceSectorID()
-    local fl = CAR.wheels[0]
     
+    -- ac.SurfaceExtendedType.Grass
+    local fl = CAR.wheels[0]    
     --ac.debug("setordapista", fl.surfaceSectorID)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
-    ac.debug("tipo da superficie", ac.lapCutsCount)
+    ac.debug("contador de cortes", ac.lapCutsCount)
     
             
     if CAR.wheelsOutside > 3 then
