@@ -114,9 +114,10 @@ function script.update(dt)
     --surfaceSectorID()
     local fl = CAR.wheels[0]
     
-    ac.debug("setordapista", fl.surfaceSectorID)
-    ac.debug("nivel de sujeira", fl.tyreDirty)
-    ac.debug("tipo da superficie", fl.surfaceType)
+    --ac.debug("setordapista", fl.surfaceSectorID)
+    --ac.debug("nivel de sujeira", fl.tyreDirty)
+    --ac.debug("tipo da superficie", fl.surfaceType)
+    ac.debug("tipo da superficie", ac.lapCutsCount)
     
             
     if CAR.wheelsOutside > 3 then
@@ -125,7 +126,7 @@ function script.update(dt)
         
         --pegamos o nover e o valor boleano da tabela, e o valor true
         currentFlags[1][1] = true
-        physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
+        --physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
 
         
     elseif CAR.wheelsOutside == 0 then
