@@ -107,7 +107,7 @@ makeFlags()
 function script.update(dt)
     ac.debug("batt", currentFlags)
 
-    ac.debug("teste de superficie", ac.SurfaceExtendedType)
+    ac.debug("teste de superficie", ac.SurfaceExtendedType.Grass)
             
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
