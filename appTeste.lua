@@ -106,8 +106,9 @@ makeFlags()
 
 function script.update(dt)
     ac.debug("batt", currentFlags)
-
-    ac.debug("teste de superficie", ac.SurfaceExtendedType.Grass)
+    
+    -- ac.SurfaceExtendedType.Grass
+    ac.debug("teste de superficie", ac.getTrackID())
 
             
     if CAR.wheelsOutside > 3 then
@@ -165,3 +166,6 @@ function script.drawUI() --Draws a shitty UI for it.
 
     ui.setCursor(vec2(0, 0))
 end
+
+--da pra usar esse para fazer a regra de deltatime para cut
+--function ac.getTrackSectorName(trackProgress)
