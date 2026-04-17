@@ -112,18 +112,16 @@ function script.update(dt)
 
     -- ac.SurfaceExtendedType.Grass
     --surfaceSectorID()
-   
+    local fl = CAR.wheels[0]
     
-    ac.debug("teste de superficie", StateWheel.surfaceSectorID)
-    ac.debug("teste de superficie", ac.StateWheel[ac.getTyresIndex(CAR.index)])
-    ac.debug("teste de superficie", ac.getTyresIndex(CAR.index))
-    ac.debug("flatSport", ac.StateWheel.tyreDirty)
-
+    ac.debug("teste de superficie", fl.surfaceSectorID)
+    ac.debug("teste de superficie", fl.tyreDirty)
+    
             
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
-
+        
         --pegamos o nover e o valor boleano da tabela, e o valor true
         currentFlags[1][1] = true
         physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
