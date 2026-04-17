@@ -1,6 +1,9 @@
 SIM = ac.getSim()
 CAR = ac.getCar(SIM.focusedCar)
 
+
+
+
 ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
 
 
@@ -109,8 +112,11 @@ function script.update(dt)
 
     -- ac.SurfaceExtendedType.Grass
     --surfaceSectorID()
+   
     
     ac.debug("teste de superficie", StateWheel.surfaceSectorID())
+    ac.debug("teste de superficie", ac.StateWheel.surfaceSectorID)
+    ac.debug("flatSport", ac.StateWheel.tyreDirty)
 
             
     if CAR.wheelsOutside > 3 then
