@@ -94,7 +94,7 @@ function makeFlags()
     flagsWindow:setName("FlagWindow")
 
     -- cria uma tabela passa o valor boleano e a bandeira correspondente, para facilitar a manipulação das bandeiras
-    NoOver = { false , slipperyFlag }
+    NoOver = { false, slipperyFlag }
     Slow = { false, whiteFlag }
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
@@ -104,23 +104,28 @@ end
 
 makeFlags()
 
-
 function script.update(dt)
     ac.debug("batt", currentFlags)
+
+    ac.SurfaceExtendedType.Grass:getCar();
+
 
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
 
-        --pegamos o nover e o valor boleano da tabela, e o valor true 
+        --pegamos o nover e o valor boleano da tabela, e o valor true
         currentFlags[1][1] = true
         physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
 
+        if ac.SurfaceExtendedType.Grass == 0 then
+            ac.debug("Status", "O pneu está na GRAMA!")
+            currentFlags[4][1] = true
+        end
     elseif CAR.wheelsOutside == 0 then
         ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
         currentFlags[1][1] = false
-       
     end
 end
 
