@@ -107,8 +107,6 @@ makeFlags()
 function script.update(dt)
     ac.debug("batt", currentFlags)
 
-    ac.SurfaceExtendedType.Grass:getCar();
-
     ac.debug("teste de superficie", ac.SurfaceExtendedType)
             
     if CAR.wheelsOutside > 3 then
