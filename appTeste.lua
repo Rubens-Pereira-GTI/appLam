@@ -115,7 +115,7 @@ function script.update(dt)
     local fl = CAR.wheels[0]
     
     ac.debug("teste de superficie", fl.surfaceSectorID)
-    ac.debug("teste de superficie", fl.tyreDirty)
+    ac.debug("teste de superficie2", fl.tyreDirty)
     
             
     if CAR.wheelsOutside > 3 then
