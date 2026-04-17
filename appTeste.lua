@@ -116,7 +116,7 @@ function script.update(dt)
     --ac.debug("setordapista", fl.surfaceSectorID)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
-    ac.debug("contador de cortes", ac.lapCutsCount)
+    ac.debug("contador de cortes", CAR.lapCutsCount)
     
             
     if CAR.wheelsOutside > 3 then
