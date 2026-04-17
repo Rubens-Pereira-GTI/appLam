@@ -115,7 +115,8 @@ function script.update(dt)
    
     
     ac.debug("teste de superficie", StateWheel.surfaceSectorID)
-    ac.debug("teste de superficie", ac.StateWheel.surfaceSectorID)
+    ac.debug("teste de superficie", ac.StateWheel[ac.getTyresIndex(CAR.index)])
+    ac.debug("teste de superficie", ac.getTyresIndex(CAR.index))
     ac.debug("flatSport", ac.StateWheel.tyreDirty)
 
             
