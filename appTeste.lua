@@ -116,9 +116,12 @@ function script.update(dt)
     --ac.debug("setordapista", fl.surfaceSectorID)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
-    ac.debug("contador de cortes", CAR.lapCutsCount)
-    
-            
+    --ac.debug("contador de cortes", CAR.lapCutsCount)
+    ac.debug("velocidade", CAR.velocity)
+    ac.debug("isInPitlane", CAR.isInPitlane)
+    ac.debug("ambulance", CAR.isInPitlane)
+    ac.debug("isRacingCar", CAR.isRacingCar)
+
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
