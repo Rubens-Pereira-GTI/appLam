@@ -102,7 +102,7 @@ function makeFlags()
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
 
-    currentFlags = { NoOver, Slow, Meatball, Code60 }
+    currentFlags = { NoOver, Slow, Meatball, Code60, cautionFlag }
 end
 
 makeFlags()
@@ -147,7 +147,7 @@ function regraSafetyCar()
 
     if CAR.isInPitlane then
         ac.debug("isInPitlaneTeste", CAR.isInPitlane)
-        currentFlags[1][1] = false
+        currentFlags[4][1] = false
         else currentFlags[1][1] = true
     end
 
