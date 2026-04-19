@@ -140,10 +140,16 @@ end
 
 --minhas functions
 function regraSafetyCar()
+
     ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("isRacingCar", CAR.isRacingCar)
 
+    if CAR.isInPitlane then
+        ac.debug("isInPitlane", CAR.isInPitlane)
+        
+    end
+    
 end
 
 --UI functions
