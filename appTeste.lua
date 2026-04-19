@@ -147,8 +147,10 @@ function regraSafetyCar()
 
     if CAR.isInPitlane then
         ac.debug("isInPitlaneTeste", CAR.isInPitlane)
-        currentFlags[1][1] = true
+        currentFlags[1][1] = false
+        else currentFlags[1][1] = true
     end
+
     
 end
 
