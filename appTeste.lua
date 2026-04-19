@@ -120,7 +120,8 @@ function script.update(dt)
     ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("ambulance", CAR.isInPitlane)
-    ac.debug("isRacingCar", CAR.isRacingCar)
+   
+    
     
 
     if CAR.wheelsOutside > 3 then
@@ -137,6 +138,14 @@ function script.update(dt)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
         currentFlags[1][1] = false
     end
+end
+
+--minhas functions
+function regraSafetyCar()
+    ac.debug("velocidade", CAR.velocity:length() * 3.6)
+    ac.debug("isInPitlane", CAR.isInPitlane)
+    ac.debug("isRacingCar", CAR.isRacingCar)
+
 end
 
 --UI functions
