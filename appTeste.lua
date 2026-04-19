@@ -132,9 +132,9 @@ function script.update(dt)
 
         
     elseif CAR.wheelsOutside == 0 then
-        ac.debug("Wheels onTrack", CAR.wheelsOutside)
-        ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
-        currentFlags[1][1] = false
+        --ac.debug("Wheels onTrack", CAR.wheelsOutside)
+        --ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
+        --currentFlags[1][1] = false
     end
 end
 
@@ -146,11 +146,13 @@ function regraSafetyCar()
     ac.debug("isRacingCar", CAR.isRacingCar)
 
     if CAR.isInPitlane then
-        ac.debug("isInPitlane", CAR.isInPitlane)
+        ac.debug("isInPitlaneTeste", CAR.isInPitlane)
         currentFlags[1][1] = true
     end
     
 end
+
+
 
 --UI functions
 --UI FUNCTIONSSS
