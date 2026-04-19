@@ -117,9 +117,7 @@ function script.update(dt)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
-    ac.debug("velocidade", CAR.velocity:length() * 3.6)
-    ac.debug("isInPitlane", CAR.isInPitlane)
-    ac.debug("ambulance", CAR.isInPitlane)
+    regraSafetyCar()
    
     
     
