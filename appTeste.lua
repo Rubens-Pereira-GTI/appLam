@@ -153,7 +153,7 @@ function regraSafetyCar()
     ac.debug("velocidadeAtual", velocidadeAtual)
 
 
-    if velocidadeAtual >  60 then
+    if velocidadeAtual >  60 and not estaNoPit then
         ac.debug("entrou no if", velocidadeAtual)
         currentFlags[2][1] = true
     else
