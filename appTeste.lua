@@ -97,6 +97,7 @@ function makeFlags()
     flagsWindow:setName("FlagWindow")
 
     -- cria uma tabela passa o valor boleano e a bandeira correspondente, para facilitar a manipulação das bandeiras
+    -- importante o nome da varavel deve ser igual ao nome que está em ac.FlagType.nomeDaBandeira
     NoOver = { false, slipperyFlag }
     Slow = { false, whiteFlag }
     Meatball = { false, meatballFlag }
