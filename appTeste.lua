@@ -122,7 +122,7 @@ function script.update(dt)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     regraSafetyCar()
-    regraDeCorte()
+    --regraDeCorte(dt)
     
     
 
@@ -142,6 +142,7 @@ function regraSafetyCar()
     --ac.debug("isRacingCar", CAR.isRacingCar)
     ac.debug("velocidadeAtual", velocidadeAtual)
     ac.debug("DriverName", ac.getDriverName(CAR.index))
+    ac.debug("time", SIM.sessionTimeLeft)
 
     if velocidadeAtual >  60 and not estaNoPit  and ac.getDriverName(CAR.index) == nomePiloto then
         ac.debug("entrou no if", velocidadeAtual)
@@ -153,7 +154,44 @@ function regraSafetyCar()
     
 end
 
-function regraDeCorte()
+function regraDeCorte(dt)
+    local contadorCortes = 0
+local timerJanela = 0
+local jaContouCorte = false
+
+-- Configurações
+local JANELA_DE_TEMPO = 15 -- Segundos para o contador expirar
+local LIMITE_DE_CORTES = 3
+
+-- 1. Gerenciar o cronômetro da janela de tempo
+    if timerJanela > 0 then
+        timerJanela = timerJanela - dt
+    else
+        contadorCortes = 0 -- Reseta o contador se o tempo acabou
+    end
+    -- 2. Detectar o corte (usando a flag para contar apenas 1 vez por incidente)
+    if car.isCutting then
+        if not jaContouCorte then
+            contadorCortes = contadorCortes + 1
+            timerJanela = JANELA_DE_TEMPO -- Reinicia o cronômetro a cada novo corte
+            jaContouCorte = true
+            
+            ac.debug("Cortes_Ativos", contadorCortes)
+            ac.debug("Tempo_Restante", math.floor(timerJanela))
+            
+            -- Lógica de Punição
+            if contadorCortes >= LIMITE_DE_CORTES then
+                ac.sendChatMessage("PUNIÇÃO: Cortes consecutivos detectados!")
+                contadorCortes = 0
+                timerJanela = 0
+            end
+        end
+    else
+        jaContouCorte = false -- Carro voltou para a pista, reseta a detecção
+    end
+
+    -- ##################################3
+
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
