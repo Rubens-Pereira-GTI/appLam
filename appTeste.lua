@@ -134,7 +134,7 @@ function regraSafetyCar()
     local velocidadeAtual = CAR.speedKmh
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
-    local nomePiloto = "Rubens P"
+    local nomePiloto = "Rubens .P"
 
     --ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", estaNoPit)
