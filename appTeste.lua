@@ -153,9 +153,9 @@ function regraSafetyCar()
     ac.debug("velocidadeAtual", CAR.speedKmh)
     ac.debug("testeBolenoV", velocidadeAtual > 60)
 
-   --if CAR.speedKmh > 60 then
-    --ac.debug("entrou no if")
-   --end
+    if velocidadeAtual > 60 then
+        ac.debug("entrou no if")
+    end
 
     
 end
