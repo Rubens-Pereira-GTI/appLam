@@ -145,15 +145,15 @@ function regraSafetyCar()
     local velocidadeAtual = CAR.speedKmh
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
-
+    local nomePiloto = "Rubens P"
 
     --ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", estaNoPit)
     --ac.debug("isRacingCar", CAR.isRacingCar)
     ac.debug("velocidadeAtual", velocidadeAtual)
+    ac.debug("DriverName", ac.getDriverName(CAR.index))
 
-
-    if velocidadeAtual >  60 and not estaNoPit then
+    if velocidadeAtual >  60 and not estaNoPit  and ac.getDriverName(CAR.index) == nomePiloto then
         ac.debug("entrou no if", velocidadeAtual)
         currentFlags[2][1] = true
     else
