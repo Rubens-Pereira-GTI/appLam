@@ -108,6 +108,7 @@ end
 makeFlags()
 
 function script.update(dt)
+    
     ac.debug("batt", currentFlags)
 
     
@@ -142,18 +143,18 @@ end
 function regraSafetyCar()
 
     local velocidadeAtual = CAR.velocity:length() * 3.6
+    local estaNoPit = CAR.isInPitlane
+    --estaNoPit = CAR.isInPitlane
 
     ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("isRacingCar", CAR.isRacingCar)
     ac.debug("velocidadeAtual", velocidadeAtual)
-    ac.debug("testeBolenoV", velocidadeAtual < 60)
+    ac.debug("testeBolenoV", velocidadeAtual > 60)
 
-   --if CAR.isInPitlane and velocidadeAtual <=60 then
-        --ac.debug("isInPitlaneTeste", CAR.isInPitlane)
-        --currentFlags[5][1] = false
-        --else currentFlags[5][1] = true
-    --end
+   if velocidadeAtual > 60 then
+    
+   end
 
     
 end
