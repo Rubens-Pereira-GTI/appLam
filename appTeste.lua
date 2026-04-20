@@ -102,7 +102,7 @@ function makeFlags()
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
     bandeiraAmarela = {false, cautionFlag }
-    currentFlags = { NoOver, Slow, Meatball, Code60, bandeiraAmarela }
+    currentFlags = { NoOver, Slow, Meatball }
 end
 
 makeFlags()
