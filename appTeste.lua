@@ -142,7 +142,7 @@ end
 --minhas functions
 function regraSafetyCar()
 
-    local velocidadeAtual = tonumber(CAR.speedKmh) or 0
+    local velocidadeAtual = CAR.speedKmh
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
 
@@ -156,7 +156,8 @@ function regraSafetyCar()
     if velocidadeAtual >  60 then
         ac.debug("entrou no if", velocidadeAtual)
         currentFlags[2][1] = true
-    
+    else
+        currentFlags[2][1] = false
     end
 
     
