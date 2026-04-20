@@ -101,8 +101,10 @@ function makeFlags()
     Slow = { false, whiteFlag }
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
-    bandeiraAmarela = {false, cautionFlag }
-    currentFlags = { NoOver, Slow, Meatball }
+    BandeiraAmarela = {false, cautionFlag}
+
+    
+    currentFlags = { NoOver, Slow, Meatball, bandeiraAmarela }
 end
 
 makeFlags()
@@ -155,9 +157,9 @@ function regraSafetyCar()
 
     if velocidadeAtual >  60 and not estaNoPit  and ac.getDriverName(CAR.index) == nomePiloto then
         ac.debug("entrou no if", velocidadeAtual)
-        currentFlags[2][1] = true
+        currentFlags[4][1] = true
     else
-        currentFlags[2][1] = false
+        currentFlags[4][1] = false
     end
 
     
