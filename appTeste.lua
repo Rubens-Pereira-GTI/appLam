@@ -156,8 +156,6 @@ function regraSafetyCar()
     if velocidadeAtual >  60 and  not CAR.isInPitlane then
         ac.debug("entrou no if", velocidadeAtual)
         currentFlags[5][1] = true
-        else 
-            currentFlags[5][1] = false
     
     end
 
