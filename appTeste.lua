@@ -102,37 +102,31 @@ function makeFlags()
     Slow = { false, whiteFlag }
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
-    Caution = {false, cautionFlag}
-    Ambulance = { false, ambulanceFlag}
+    Caution = { false, cautionFlag }
+    Ambulance = { false, ambulanceFlag }
 
-    
-    currentFlags = { NoOver, Slow, Meatball, Caution, Ambulance}
+
+    currentFlags = { NoOver, Slow, Meatball, Caution, Ambulance }
 end
 
 makeFlags()
 
 function script.update(dt)
-    
     ac.debug("batt", currentFlags)
 
-    
+
     -- ac.SurfaceExtendedType.Grass
-    --local fl = CAR.wheels[0]    
+    --local fl = CAR.wheels[0]
     --ac.debug("setordapista", fl.surfaceSectorID)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     SafetyCarNaPista()
-    --regraDeCorte(dt)
-    
-    
-
-    
+    regraDeCorte(dt)
 end
 
 --minhas functions
 function SafetyCarNaPista()
-
     local velocidadeAtual = CAR.speedKmh
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
@@ -151,76 +145,41 @@ function SafetyCarNaPista()
     --ac.debug("piscaAlerta", piscaAlertaLigado)
     ac.debug("nome do carro", CAR:name())
 
-    if not estaNoPit  
-        and ac.getDriverName(CAR.index) == nomePiloto 
-        and piscaAlertaLigado
-        then
 
+
+    if not estaNoPit
+        and ac.getDriverName(CAR.index) == nomePiloto
+        and piscaAlertaLigado
+    then
         currentFlags[4][1] = true
         currentFlags[5][1] = true
     else
         currentFlags[4][1] = false
         currentFlags[5][1] = false
     end
-
-    
 end
 
 function regraDeCorte(dt)
-    local contadorCortes = 0
-local timerJanela = 0
-local jaContouCorte = false
-
--- Configurações
-local JANELA_DE_TEMPO = 15 -- Segundos para o contador expirar
-local LIMITE_DE_CORTES = 3
-
--- 1. Gerenciar o cronômetro da janela de tempo
-    if timerJanela > 0 then
-        timerJanela = timerJanela - dt
-    else
-        contadorCortes = 0 -- Reseta o contador se o tempo acabou
-    end
-    -- 2. Detectar o corte (usando a flag para contar apenas 1 vez por incidente)
-    if car.isCutting then
-        if not jaContouCorte then
-            contadorCortes = contadorCortes + 1
-            timerJanela = JANELA_DE_TEMPO -- Reinicia o cronômetro a cada novo corte
-            jaContouCorte = true
-            
-            ac.debug("Cortes_Ativos", contadorCortes)
-            ac.debug("Tempo_Restante", math.floor(timerJanela))
-            
-            -- Lógica de Punição
-            if contadorCortes >= LIMITE_DE_CORTES then
-                ac.sendChatMessage("PUNIÇÃO: Cortes consecutivos detectados!")
-                contadorCortes = 0
-                timerJanela = 0
-            end
-        end
-    else
-        jaContouCorte = false -- Carro voltou para a pista, reseta a detecção
-    end
-
+    local idDoVitimado = 0
+    
+    
+    
     -- ##################################3
 
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
-        
+        ac.debug("comando Punição", ac.sendChatMessage("/black ".. CAR.index))
+
         --pegamos o nover e o valor boleano da tabela, e o valor true
         currentFlags[1][1] = true
         --physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
-
-        
     elseif CAR.wheelsOutside == 0 then
         --ac.debug("Wheels onTrack", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
         currentFlags[1][1] = false
     end
 end
-
-
 
 --UI functions
 --UI FUNCTIONSSS
@@ -266,3 +225,40 @@ end
 --function ac.getTrackSectorName(trackProgress)
 
 --ac.onTrackPointCrossed(carIndex, progress, callback)
+function Teste()
+    local contadorCortes = 0
+    local timerJanela = 0
+    local jaContouCorte = false
+
+    -- Configurações
+    local JANELA_DE_TEMPO = 15 -- Segundos para o contador expirar
+    local LIMITE_DE_CORTES = 3
+
+    -- 1. Gerenciar o cronômetro da janela de tempo
+    if timerJanela > 0 then
+        timerJanela = timerJanela - dt
+    else
+        contadorCortes = 0 -- Reseta o contador se o tempo acabou
+    end
+    -- 2. Detectar o corte (usando a flag para contar apenas 1 vez por incidente)
+    if car.isCutting then
+        if not jaContouCorte then
+            contadorCortes = contadorCortes + 1
+            timerJanela = JANELA_DE_TEMPO -- Reinicia o cronômetro a cada novo corte
+            jaContouCorte = true
+
+            ac.debug("Cortes_Ativos", contadorCortes)
+            ac.debug("Tempo_Restante", math.floor(timerJanela))
+
+            -- Lógica de Punição
+            if contadorCortes >= LIMITE_DE_CORTES then
+                ac.sendChatMessage("PUNIÇÃO: Cortes consecutivos detectados!")
+                contadorCortes = 0
+                timerJanela = 0
+            end
+        end
+    else
+        jaContouCorte = false -- Carro voltou para a pista, reseta a detecção
+    end
+
+end
