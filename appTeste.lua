@@ -142,7 +142,7 @@ end
 --minhas functions
 function regraSafetyCar()
 
-    local velocidadeAtual = CAR.speedKmh
+    local velocidadeAtual = tonumber(CAR.speedKmh) or 0
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
 
