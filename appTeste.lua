@@ -121,7 +121,7 @@ function script.update(dt)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     regraSafetyCar()
-   
+   regraDeCorte()
     
     
 
