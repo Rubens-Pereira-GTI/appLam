@@ -150,7 +150,7 @@ function regraSafetyCar()
     ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("isRacingCar", CAR.isRacingCar)
-    ac.debug("velocidadeAtual", velocidadeAtual)
+    ac.debug("velocidadeAtual", CAR.speedKmh)
     ac.debug("testeBolenoV", velocidadeAtual > 60)
 
    if CAR.speedKmh > 60 then
