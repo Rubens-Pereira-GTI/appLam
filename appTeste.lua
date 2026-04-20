@@ -125,20 +125,7 @@ function script.update(dt)
     
     
 
-    if CAR.wheelsOutside > 3 then
-        ac.debug("Wheels Outside", CAR.wheelsOutside)
-        ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
-        
-        --pegamos o nover e o valor boleano da tabela, e o valor true
-        currentFlags[1][1] = true
-        --physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
-
-        
-    elseif CAR.wheelsOutside == 0 then
-        --ac.debug("Wheels onTrack", CAR.wheelsOutside)
-        --ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
-        --currentFlags[1][1] = false
-    end
+    
 end
 
 --minhas functions
@@ -163,6 +150,23 @@ function regraSafetyCar()
     end
 
     
+end
+
+function regraDeCorte()
+    if CAR.wheelsOutside > 3 then
+        ac.debug("Wheels Outside", CAR.wheelsOutside)
+        ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
+        
+        --pegamos o nover e o valor boleano da tabela, e o valor true
+        currentFlags[1][1] = true
+        --physics.setCarPenalty(ac.PenaltyType.MandatoryPits, 1)
+
+        
+    elseif CAR.wheelsOutside == 0 then
+        --ac.debug("Wheels onTrack", CAR.wheelsOutside)
+        ac.setDriverChatNameColor(CAR.index, rgbm(0, 5, 0, 1))
+        currentFlags[1][1] = false
+    end
 end
 
 
