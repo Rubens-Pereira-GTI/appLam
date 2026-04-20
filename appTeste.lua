@@ -151,10 +151,10 @@ function regraSafetyCar()
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("isRacingCar", CAR.isRacingCar)
     ac.debug("velocidadeAtual", CAR.speedKmh)
-    ac.debug("testeBolenoV", velocidadeAtual > 60)
+    ac.debug("testeBolenoV", velocidadeAtual)
 
     if velocidadeAtual > 60 then
-        ac.debug("entrou no if")
+        ac.debug("entrou no if" )
     end
 
     
