@@ -101,10 +101,10 @@ function makeFlags()
     Slow = { false, whiteFlag }
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
-    BandeiraAmarela = {false, cautionFlag}
+    Caution = {false, cautionFlag}
 
     
-    currentFlags = { NoOver, Slow, Meatball, bandeiraAmarela }
+    currentFlags = { NoOver, Slow, Meatball, Caution }
 end
 
 makeFlags()
@@ -121,7 +121,7 @@ function script.update(dt)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     regraSafetyCar()
-   regraDeCorte()
+    regraDeCorte()
     
     
 
