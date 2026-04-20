@@ -147,7 +147,7 @@ function regraSafetyCar()
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("isRacingCar", CAR.isRacingCar)
 
-    if CAR.isInPitlane and velocidadeAtual then
+    if CAR.isInPitlane and velocidadeAtual <=60 then
         ac.debug("isInPitlaneTeste", CAR.isInPitlane)
         currentFlags[5][1] = false
         else currentFlags[5][1] = true
