@@ -112,7 +112,7 @@ function script.update(dt)
 
     
     -- ac.SurfaceExtendedType.Grass
-    local fl = CAR.wheels[0]    
+    --local fl = CAR.wheels[0]    
     --ac.debug("setordapista", fl.surfaceSectorID)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
@@ -146,12 +146,14 @@ function regraSafetyCar()
     ac.debug("velocidade", CAR.velocity:length() * 3.6)
     ac.debug("isInPitlane", CAR.isInPitlane)
     ac.debug("isRacingCar", CAR.isRacingCar)
+    ac.debug("velocidadeAtual", velocidadeAtual)
+    ad.debug("testeBolenoV", velocidadeAtual < 60)
 
-    if CAR.isInPitlane and velocidadeAtual <=60 then
-        ac.debug("isInPitlaneTeste", CAR.isInPitlane)
-        currentFlags[5][1] = false
-        else currentFlags[5][1] = true
-    end
+   --if CAR.isInPitlane and velocidadeAtual <=60 then
+        --ac.debug("isInPitlaneTeste", CAR.isInPitlane)
+        --currentFlags[5][1] = false
+        --else currentFlags[5][1] = true
+    --end
 
     
 end
