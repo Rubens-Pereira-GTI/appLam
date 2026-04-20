@@ -103,9 +103,10 @@ function makeFlags()
     Meatball = { false, meatballFlag }
     Code60 = { false, code60Flag }
     Caution = {false, cautionFlag}
+    Ambulance = { false, ambulanceFlag}
 
     
-    currentFlags = { NoOver, Slow, Meatball, Caution }
+    currentFlags = { NoOver, Slow, Meatball, Caution, Ambulance}
 end
 
 makeFlags()
@@ -121,7 +122,7 @@ function script.update(dt)
     --ac.debug("nivel de sujeira", fl.tyreDirty)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
-    regraSafetyCar()
+    SafetyCarNaPista()
     --regraDeCorte(dt)
     
     
@@ -130,25 +131,35 @@ function script.update(dt)
 end
 
 --minhas functions
-function regraSafetyCar()
+function SafetyCarNaPista()
 
     local velocidadeAtual = CAR.speedKmh
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
     local nomePiloto = "Rubens .P"
+    local piscaAlertaLigado = car.turningLightsLeft and car.turningLightsRight
 
     --ac.debug("velocidade", CAR.velocity:length() * 3.6)
-    ac.debug("isInPitlane", estaNoPit)
+    --ac.debug("isInPitlane", estaNoPit)
     --ac.debug("isRacingCar", CAR.isRacingCar)
-    ac.debug("velocidadeAtual", velocidadeAtual)
-    ac.debug("DriverName", ac.getDriverName(CAR.index))
+    --ac.debug("velocidadeAtual", velocidadeAtual)
+    --ac.debug("DriverName", ac.getDriverName(CAR.index))
     ac.debug("time", SIM.sessionTimeLeft)
+    ac.debug("hasFlashingLights", CAR.hasFlashingLights)
+    ac.debug("pisca esquerdo", CAR.turningLeftLights)
+    ac.debug("pisca direito", CAR.turningRightLights)
+    ac.debug("nome do carro", CAR.name())
 
-    if velocidadeAtual >  60 and not estaNoPit  and ac.getDriverName(CAR.index) == nomePiloto then
-        ac.debug("entrou no if", velocidadeAtual)
+    if velocidadeAtual >  60 and not estaNoPit  
+        and ac.getDriverName(CAR.index) == nomePiloto 
+        and piscaAlertaLigado
+        then
+
         currentFlags[4][1] = true
+        currentFlags[5][1] = true
     else
         currentFlags[4][1] = false
+        currentFlags[5][1] = false
     end
 
     
