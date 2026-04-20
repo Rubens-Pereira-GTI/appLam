@@ -152,7 +152,6 @@ function SafetyCarNaPista()
 
     if velocidadeAtual >  60 and not estaNoPit  
         and ac.getDriverName(CAR.index) == nomePiloto 
-        and piscaAlertaLigado
         then
 
         currentFlags[4][1] = true
