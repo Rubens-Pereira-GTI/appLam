@@ -147,7 +147,7 @@ function SafetyCarNaPista()
     ac.debug("time", SIM.sessionTimeLeft)
     ac.debug("hasFlashingLights", CAR.hasFlashingLights)
     ac.debug("pisca esquerdo", CAR.turningLeftLights)
-    --ac.debug("pisca direito", CAR.turningRightLights)
+    ac.debug("pisca direito", CAR.turningRightLights)
     --ac.debug("nome do carro", CAR.name())
 
     if not estaNoPit  
