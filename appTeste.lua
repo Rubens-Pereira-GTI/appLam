@@ -137,7 +137,7 @@ function SafetyCarNaPista()
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
     local nomePiloto = "Rubens .P"
-    --local piscaAlertaLigado = car.turningLightsLeft and car.turningLightsRight
+    local piscaAlertaLigado = car.turningLightsLeft and car.turningLightsRight
 
     --ac.debug("velocidade", CAR.velocity:length() * 3.6)
     --ac.debug("isInPitlane", estaNoPit)
@@ -148,6 +148,7 @@ function SafetyCarNaPista()
     ac.debug("hasFlashingLights", CAR.hasFlashingLights)
     ac.debug("pisca esquerdo", CAR.turningLeftLights)
     ac.debug("pisca direito", CAR.turningRightLights)
+    ac.debug("piscaAlerta", piscaAlertaLigado)
     --ac.debug("nome do carro", CAR.name())
 
     if not estaNoPit  
