@@ -144,11 +144,11 @@ function SafetyCarNaPista()
     --ac.debug("isRacingCar", CAR.isRacingCar)
     --ac.debug("velocidadeAtual", velocidadeAtual)
     --ac.debug("DriverName", ac.getDriverName(CAR.index))
-    ac.debug("time", SIM.sessionTimeLeft)
-    ac.debug("hasFlashingLights", CAR.hasFlashingLights)
-    ac.debug("pisca esquerdo", CAR.turningLeftLights)
-    ac.debug("pisca direito", CAR.turningRightLights)
-    ac.debug("nome do carro", CAR.name())
+    --ac.debug("time", SIM.sessionTimeLeft)
+    --ac.debug("hasFlashingLights", CAR.hasFlashingLights)
+    --ac.debug("pisca esquerdo", CAR.turningLeftLights)
+    --ac.debug("pisca direito", CAR.turningRightLights)
+    --ac.debug("nome do carro", CAR.name())
 
     if velocidadeAtual >  60 and not estaNoPit  
         and ac.getDriverName(CAR.index) == nomePiloto 
