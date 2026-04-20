@@ -147,17 +147,17 @@ function regraSafetyCar()
     estaNoPit = CAR.isInPitlane
 
 
-    ac.debug("velocidade", CAR.velocity:length() * 3.6)
-    ac.debug("isInPitlane", CAR.isInPitlane)
-    ac.debug("isRacingCar", CAR.isRacingCar)
-    ac.debug("velocidadeAtual", CAR.speedKmh)
+    --ac.debug("velocidade", CAR.velocity:length() * 3.6)
+    ac.debug("isInPitlane", estaNoPit)
+    --ac.debug("isRacingCar", CAR.isRacingCar)
+    ac.debug("velocidadeAtual", velocidadeAtual)
 
 
-    if velocidadeAtual >  60 then
-        ac.debug("entrou no if", velocidadeAtual)
-        currentFlags[5][1] = true
+   -- if velocidadeAtual >  60 then
+     --   ac.debug("entrou no if", velocidadeAtual)
+      --  currentFlags[5][1] = true
     
-    end
+    --end
 
     
 end
