@@ -142,9 +142,9 @@ end
 --minhas functions
 function regraSafetyCar()
 
-    --local velocidadeAtual = CAR.speedKmh
+    local velocidadeAtual = CAR.speedKmh
     local estaNoPit = CAR.isInPitlane
-    --estaNoPit = CAR.isInPitlane
+    estaNoPit = CAR.isInPitlane
 
 
     ac.debug("velocidade", CAR.velocity:length() * 3.6)
@@ -153,9 +153,9 @@ function regraSafetyCar()
     ac.debug("velocidadeAtual", CAR.speedKmh)
     ac.debug("testeBolenoV", velocidadeAtual > 60)
 
-   if CAR.speedKmh > 60 then
-    ac.debug("entrou no if")
-   end
+   --if CAR.speedKmh > 60 then
+    --ac.debug("entrou no if")
+   --end
 
     
 end
