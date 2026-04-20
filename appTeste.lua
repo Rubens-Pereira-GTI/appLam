@@ -137,7 +137,7 @@ function SafetyCarNaPista()
     local estaNoPit = CAR.isInPitlane
     estaNoPit = CAR.isInPitlane
     local nomePiloto = "Rubens .P"
-    local piscaAlertaLigado = car.turningLightsLeft and car.turningLightsRight
+    local piscaAlertaLigado = CAR.turningLeftLights and CAR.turningRightLights
 
     --ac.debug("velocidade", CAR.velocity:length() * 3.6)
     --ac.debug("isInPitlane", estaNoPit)
