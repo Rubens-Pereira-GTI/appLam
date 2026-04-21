@@ -271,10 +271,10 @@ end
 function TesteAlteracaoResults()
     --pasta do RaceResults
     -- No servidor, o ponto '.' representa a pasta onde o servidor está rodando
-    local caminhoRelativo = "out/race_out.json"
-    ac.debug("Teste caminho relativo 1 ", caminhoRelativo)
     local pasta = ac.getFolder(ac.FolderID.RaceResults)
-    ac.debug("Teste caminho relativo 2", "out/race_out.json")
+    ac.debug("Teste caminho relativo", ac.FolderID.RaceResults)
+    --ac.getFolder()
+    
 
 end
 
