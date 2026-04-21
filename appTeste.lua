@@ -122,8 +122,9 @@ function script.update(dt)
     --ac.debug("tipo da superficie", fl.surfaceType)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     SafetyCarNaPista()
-    regraDeCorte(dt)
+    RegraDeCorte(dt)
     TesteAlteracaoResults()
+    
 end
 
 --minhas functions
@@ -160,7 +161,7 @@ function SafetyCarNaPista()
     end
 end
 
-function regraDeCorte(dt)
+function RegraDeCorte(dt)
     local idDoVitimado = 0
     
     
@@ -171,7 +172,7 @@ function regraDeCorte(dt)
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
         --ac.debug("comando Punição", ac.sendChatMessage("/black ".. CAR.index))
-        physics.setCarPenalty(ac.PenaltyType.BlackFlag)
+        
 
         --pegamos o nover e o valor boleano da tabela, e o valor true
         currentFlags[1][1] = true
@@ -267,7 +268,16 @@ end
 
 function TesteAlteracaoResults()
     --pasta do RaceResults
+    -- No servidor, o ponto '.' representa a pasta onde o servidor está rodando
+    local caminhoRelativo = "out/race_out.json"
+    ac.debug("Teste caminho relativo 1 ", caminhoRelativo)
     local pasta = ac.getFolder(ac.FolderID.RaceResults)
-    ac.debug("Pasta do RaceResults", pasta)
+    ac.debug("Teste caminho relativo 2", "out/race_out.json")
 
+end
+
+function ObterCaminhoServidor()
+    -- No Linux/Docker, os resultados ficam na pasta 'out' na raiz do server
+    -- Tentamos o caminho relativo primeiro
+    return "out/race_out.json"
 end
