@@ -123,9 +123,11 @@ function script.update(dt)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     SafetyCarNaPista()
     RegraDeCorte(dt)
-    TesteAlteracaoResults()
+    
     
 end
+
+TesteAlteracaoResults()
 
 --minhas functions
 function SafetyCarNaPista()
