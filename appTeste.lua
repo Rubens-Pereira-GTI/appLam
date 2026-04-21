@@ -123,6 +123,7 @@ function script.update(dt)
     --ac.debug("contador de cortes", CAR.lapCutsCount)
     SafetyCarNaPista()
     regraDeCorte(dt)
+    TesteAlteracaoResults()
 end
 
 --minhas functions
@@ -169,7 +170,8 @@ function regraDeCorte(dt)
     if CAR.wheelsOutside > 3 then
         ac.debug("Wheels Outside", CAR.wheelsOutside)
         ac.setDriverChatNameColor(CAR.index, rgbm(5, 0, 0, 1))
-        ac.debug("comando Punição", ac.sendChatMessage("/black ".. CAR.index))
+        --ac.debug("comando Punição", ac.sendChatMessage("/black ".. CAR.index))
+        physics.setCarPenalty(ac.PenaltyType.BlackFlag)
 
         --pegamos o nover e o valor boleano da tabela, e o valor true
         currentFlags[1][1] = true
@@ -260,5 +262,12 @@ function Teste()
     else
         jaContouCorte = false -- Carro voltou para a pista, reseta a detecção
     end
+
+end
+
+function TesteAlteracaoResults()
+    --pasta do RaceResults
+    local pasta = ac.getFolder(ac.FolderID.RaceResults)
+    ac.debug("Pasta do RaceResults", pasta)
 
 end
